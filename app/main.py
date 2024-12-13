@@ -207,7 +207,7 @@ from collections import deque
 # A deque to store the last 100 messages
 chat_history = deque(maxlen=100)
 
-@app.websocket("/wss/{unique_id}")
+@app.websocket("/ws/{unique_id}")
 async def websocket_endpoint(websocket: WebSocket, unique_id: int):
     await manager.connect(websocket)
     username = None  # Placeholder for the username

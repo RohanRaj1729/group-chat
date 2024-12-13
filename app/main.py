@@ -145,7 +145,7 @@ html = """
             console.log(rootPath);
             console.log(port);
             // Construct the WebSocket URL
-            ws = new WebSocket(`ws://${rootPath}${port}/ws/${uniquePath}`);
+            ws = new WebSocket(`wss://${rootPath}${port}/ws/${uniquePath}`);
 
             ws.onopen = () => {
                 // Send the username to the server
@@ -207,7 +207,7 @@ from collections import deque
 # A deque to store the last 100 messages
 chat_history = deque(maxlen=100)
 
-@app.websocket("/ws/{unique_id}")
+@app.websocket("/wss/{unique_id}")
 async def websocket_endpoint(websocket: WebSocket, unique_id: int):
     await manager.connect(websocket)
     username = None  # Placeholder for the username

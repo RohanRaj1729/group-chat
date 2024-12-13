@@ -137,7 +137,15 @@ html = """
 
             // Establish WebSocket connection with a unique ID
             const uniquePath = Date.now();
-            ws = new WebSocket(`ws://localhost:9999/ws/${uniquePath}`);
+            const rootPath = window.location.hostname; // This gives only the domain (e.g., example.com)
+
+            // Get the port if it's specified (e.g., 8080 or 5000) or use the default port for HTTP/HTTPS
+            const port = window.location.port ? `:${window.location.port}` : '';
+            
+            console.log(rootPath);
+            console.log(port);
+            // Construct the WebSocket URL
+            ws = new WebSocket(`ws://${rootPath}${port}/ws/${uniquePath}`);
 
             ws.onopen = () => {
                 // Send the username to the server

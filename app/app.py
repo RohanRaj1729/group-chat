@@ -1,10 +1,12 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from mangum import Mangum
 import json
 from collections import deque
 
 app = FastAPI()
+handler = Mangum(app=app)
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,7 +22,7 @@ html = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material Chat</title>
+    <title>Restaurant Chat App</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -346,7 +348,7 @@ html = """
     </div>
 
     <script>
-        const ws = new WebSocket(`ws://${window.location.host}/ws/chat`);
+        const ws = new WebSocket(`wss://${window.location.host}/ws/chat`);
         const messages = document.getElementById("messages");
         const messageInput = document.getElementById("messageText");
         const imageInput = document.getElementById("imageInput");

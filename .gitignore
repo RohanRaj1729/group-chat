@@ -1,8 +1,10 @@
 .venv/
 .vscode/
+dependencies/
 # Node artifact files
 node_modules/
 dist/
+*.zip
 
 # Compiled Java class files
 *.class

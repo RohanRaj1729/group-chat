@@ -316,7 +316,7 @@ html = """
     <div class="chat-container">
         <div class="chat-header">
             <span class="material-icons">chat</span>
-            <h2>Material Chat</h2>
+            <h2>Restaurant Chat App</h2>
         </div>
         <ul id="messages"></ul>
         <form class="message-input-container" onsubmit="sendMessage(event)">
